@@ -1,21 +1,31 @@
 import { describe, test, expect } from "vitest";
 import { isPerfectNumber } from "./main";
 
+//wrapped in a describe function for grouping
+
 describe("Perfect Numbers Kata", () => {
+  // Test case for known perfect numbers
+  // A perfect number is a positive integer that is equal to the sum of its proper divisors (excluding itself).
   test("should return true for known perfect numbers", () => {
-    expect(isPerfectNumber(6)).toBe(true); // 1 + 2 + 3 = 6
-    expect(isPerfectNumber(28)).toBe(true); // 1 + 2 + 4 + 7 + 14 = 28
-    expect(isPerfectNumber(496)).toBe(true); // 1 + divisors = 496
+    expect(isPerfectNumber(6)).toBe(true);
+    expect(isPerfectNumber(28)).toBe(true);
+    expect(isPerfectNumber(496)).toBe(true);
   });
 
+  // Test case for non-perfect numbers
+  // These are numbers that are not equal to the sum of their proper divisors.
+
   test("should return false for non-perfect numbers", () => {
-    expect(isPerfectNumber(12)).toBe(false); // 1 + 2 + 3 + 4 + 6 ≠ 12
-    expect(isPerfectNumber(20)).toBe(false); // 1 + 2 + 4 + 5 + 10 ≠ 20
+    expect(isPerfectNumber(12)).toBe(false);
+    expect(isPerfectNumber(20)).toBe(false);
     expect(isPerfectNumber(99)).toBe(false);
   });
 
-  test("should return false for edge cases that are not perfect numbers", () => {
-    expect(isPerfectNumber(1)).toBe(false); // Proper divisors of 1 = []
-    expect(isPerfectNumber(2)).toBe(false); // Proper divisors of 2 = [1]
+  // Test case for numbers less than 3
+  // Numbers like 1 and 2 are not perfect numbers as they only have themselves and/or the number 1 as divisors.
+
+  test("should return false for numbers less than 3", () => {
+    expect(isPerfectNumber(1)).toBe(false);
+    expect(isPerfectNumber(2)).toBe(false);
   });
 });
